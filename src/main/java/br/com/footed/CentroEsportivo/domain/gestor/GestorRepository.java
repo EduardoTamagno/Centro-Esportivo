@@ -1,4 +1,4 @@
-package br.com.footed.CentroEsportivo.domain.pessoa.gestor;
+package br.com.footed.CentroEsportivo.domain.gestor;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

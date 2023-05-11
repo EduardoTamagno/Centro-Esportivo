@@ -21,4 +21,4 @@ public record DadosCadastroPessoa(
         @NotBlank
         @Pattern(regexp = "\\d{8}|\\d{9}")
         String telefone,
-        String data_nacimento) {}
+        String data_nascimento) {}

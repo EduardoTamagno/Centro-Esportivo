@@ -3,16 +3,13 @@ package br.com.footed.CentroEsportivo.domain.endereco;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 
-public record DadosCadastroEndereco(
-        @NotBlank
+public record DadosAtualizacaoEndereco(
         String logradouro,
-        @NotBlank
         String bairro,
-        @NotBlank
-        @Pattern(regexp = "\\d{8}")
+        @Pattern(regexp = "^.{0}$|^.{8}$\n")
         String cep,
-        @NotBlank
         String cidade,
-        @NotBlank
         String uf,
-        int numero) {}
+        int numero
+) {
+}

@@ -1,10 +1,9 @@
 package br.com.footed.CentroEsportivo.controller;
 
-import br.com.footed.CentroEsportivo.domain.pessoa.DadosAtualizacaoPessoa;
-import br.com.footed.CentroEsportivo.domain.pessoa.gestor.DadosAtualizacaoGestor;
-import br.com.footed.CentroEsportivo.domain.pessoa.gestor.DadosCadastroGestor;
-import br.com.footed.CentroEsportivo.domain.pessoa.gestor.Gestor;
-import br.com.footed.CentroEsportivo.domain.pessoa.gestor.GestorRepository;
+import br.com.footed.CentroEsportivo.domain.gestor.DadosAtualizacaoGestor;
+import br.com.footed.CentroEsportivo.domain.gestor.DadosCadastroGestor;
+import br.com.footed.CentroEsportivo.domain.gestor.Gestor;
+import br.com.footed.CentroEsportivo.domain.gestor.GestorRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,14 +18,13 @@ public class GestorController {
     @PostMapping
     @Transactional
     public void cadastrar(@RequestBody @Valid DadosCadastroGestor dados) {
-        Gestor gestor = new Gestor(dados);
-        this.repository.save(gestor);
+        this.repository.save(new Gestor(dados));
     }
 
     @PutMapping
     @Transactional
     public void atualizar(@RequestBody @Valid DadosAtualizacaoGestor dados) {
-        var gestor = repository.getReferenceById(dados.gestor_id());
-        gestor.getPessoa().atualizarInformacoes(dados.pessoa());
+        var gestor = repository.getReferenceById(dados.pessoa_id());
+        gestor.atualizarInformacoes(dados);
     }
 }

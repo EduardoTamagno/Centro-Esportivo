@@ -1,12 +1,13 @@
-package br.com.footed.CentroEsportivo.domain.pessoa.gestor;
+package br.com.footed.CentroEsportivo.domain.usuario;
 
 import br.com.footed.CentroEsportivo.domain.pessoa.DadosAtualizacaoPessoa;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
-public record DadosAtualizacaoGestor(
+public record DadosAtualizacaoUsuario(
         @NotNull
-        Integer gestor_id,
+        Integer pessoa_id,
         @NotNull
         @Valid
-        DadosAtualizacaoPessoa pessoa) {}
+        DadosAtualizacaoPessoa pessoa) {
+}

@@ -11,30 +11,30 @@ import java.util.Date;
 @Getter
 @Entity
 @Table(name = "pessoa")
-public class Pessoa {
+@Inheritance(strategy = InheritanceType.JOINED)
+public abstract class Pessoa {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pessoa_sequence")
-    @SequenceGenerator(name = "pessoa_sequence", sequenceName = "pessoa_sequence", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int pessoa_Id;
     private String nome;
     private String email;
     private String telefone;
     private String cpf;
-    private Date dataNascimento;
+    private Date data_nascimento;
 
     public Pessoa(DadosCadastroPessoa dados) {
         this.nome = dados.nome();
         this.email = dados.email();
         this.telefone = "(" + dados.ddd()+ ")" + dados.telefone();
         this.cpf = dados.cpf();
-        if (dados.data_nacimento() != null) this.dataNascimento = new Data(dados.data_nacimento()).getData();
+        if (dados.data_nascimento() != null) this.data_nascimento = new Data(dados.data_nascimento()).getData();
     }
 
     public void atualizarInformacoes(DadosAtualizacaoPessoa dados) {
         if(dados.nome() != null) this.nome = dados.nome();
         if(dados.email() != null) this.email = dados.email();
-        if(dados.data_nacimento() != null) this.dataNascimento = new Data(dados.data_nacimento()).getData();;
+        if(dados.data_nascimento() != null) this.data_nascimento = new Data(dados.data_nascimento()).getData();;
         if(dados.ddd() != null && dados.telefone() != null) this.telefone = "(" + dados.ddd()+ ")" + dados.telefone();
     }
 }
