@@ -1,0 +1,26 @@
+POST http://localhost:8080/gestor
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJGb290ZWQiLCJleHAiOjE2OTY4MTE0NzUsInN1YiI6IjA0OC44MjcuNzcwLTEwIn0.T89hCwDZRqLL1D5U2LwoHTo9BHFHdlg2roVvliYN5kA
+
+{
+    "cnpj": "78.182.695/0001-99",
+    "senha": "gestor",
+    "pessoa": {
+        "nome": "Celso Paulino",
+        "email": "celso.tamagno@gmail.com",
+        "ddd":  "54",
+        "telefone": "981031457",
+        "data_nascimento": "11/06/1973"
+    },
+    "complexo": {
+        "nome": "Estação da Baola",
+        "endereco": {
+            "logradouro": "Av. Sete de Setembro",
+            "bairro": "Centro",
+            "cep": "99700698",
+            "cidade": "Erechim",
+            "uf": "RS",
+            "numero": "233"
+        }
+    }
+}

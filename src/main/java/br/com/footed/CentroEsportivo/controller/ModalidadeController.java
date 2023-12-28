@@ -1,26 +1,27 @@
 package br.com.footed.CentroEsportivo.controller;
 
-import br.com.footed.CentroEsportivo.domain.modalidade.DadosCadastroModalidade;
-import br.com.footed.CentroEsportivo.domain.modalidade.Modalidade;
-import br.com.footed.CentroEsportivo.domain.modalidade.ModalidadeRepository;
+import br.com.footed.CentroEsportivo.model.Modalidade.DadosCadastroModalidade;
+import br.com.footed.CentroEsportivo.model.Modalidade.DadosDetalhamentoModalidade;
+import br.com.footed.CentroEsportivo.service.ModalidadeService;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@AllArgsConstructor
 @RestController
 @RequestMapping("/modalidade")
 public class ModalidadeController {
 
-    @Autowired
-    private ModalidadeRepository repository;
+    private ModalidadeService modalidadeService;
 
     @PostMapping
     @Transactional
-    public void cadastrar(@RequestBody @Valid DadosCadastroModalidade dados){
-        repository.save(new Modalidade(dados));
+    public DadosDetalhamentoModalidade cadastrar(@RequestBody @Valid DadosCadastroModalidade dados){
+        return modalidadeService.cadastrar(dados);
     }
+
 }

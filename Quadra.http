@@ -1,0 +1,12 @@
+POST http://localhost:8080/quadra
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJGb290ZWQiLCJleHAiOjE2OTczMDcyODcsInN1YiI6IjM2NC4xMzUuMTEwLTA3In0.ahO-xyrH53vo5Y-mzEKUhlg6JXXaYp7x5WJTK-Z2P7U
+
+{
+    "nome": "Campo Principal",
+    "preco": 200,
+    "descricao": "Campo 11 padrão Fifa",
+    "inicio_funcionamento": "08:00:00",
+    "fim_funcionamento": "22:30:00",
+    "complexo_id":7
+}

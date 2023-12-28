@@ -1,30 +1,26 @@
 package br.com.footed.CentroEsportivo.controller;
 
-import br.com.footed.CentroEsportivo.domain.pessoa.DadosCadastroPessoa;
-import br.com.footed.CentroEsportivo.domain.usuario.DadosAtualizacaoUsuario;
-import br.com.footed.CentroEsportivo.domain.usuario.Usuario;
-import br.com.footed.CentroEsportivo.domain.usuario.UsuarioRepository;
+import br.com.footed.CentroEsportivo.model.usuario.DadosCadastroUsuario;
+import br.com.footed.CentroEsportivo.model.usuario.DadosDetalhamentoUsuario;
+import br.com.footed.CentroEsportivo.service.UsuarioService;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@AllArgsConstructor
 @RequestMapping("/usuario")
 public class UsuarioController {
-    @Autowired
-    private UsuarioRepository repository;
+    private UsuarioService usuarioService;
 
     @PostMapping
     @Transactional
-    public void cadastrar(@RequestBody @Valid DadosCadastroPessoa dados) {
-        this.repository.save(new Usuario(dados));
-    }
-
-    @PutMapping
-    @Transactional
-    public void atualizar(@RequestBody @Valid DadosAtualizacaoUsuario dados) {
-        var usuario = repository.getReferenceById(dados.pessoa_id());
-        usuario.atualizarInformacoes(dados.pessoa());
+    public DadosDetalhamentoUsuario cadastrar(@RequestBody @Valid DadosCadastroUsuario dados){
+        DadosDetalhamentoUsuario detalhamentoUsuario = usuarioService.cadastrar(dados);
+        return detalhamentoUsuario;
     }
 }

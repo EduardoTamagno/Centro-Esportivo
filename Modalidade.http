@@ -1,0 +1,8 @@
+POST http://localhost:8080/modalidade
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJGb290ZWQiLCJleHAiOjE2OTczMjg4MDMsInN1YiI6IjM2NC4xMzUuMTEwLTA3In0.fasnjrs3mgrZ4KyMZItUN-mtd4mEafv1Y_1A9VDbSPM
+
+{
+  "nome": "Vôlei ",
+  "descricao": "Modalidade Vôlei de quadra de piso 6x6 "
+}

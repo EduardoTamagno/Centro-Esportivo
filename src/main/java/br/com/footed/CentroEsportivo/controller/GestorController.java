@@ -1,30 +1,27 @@
 package br.com.footed.CentroEsportivo.controller;
 
-import br.com.footed.CentroEsportivo.domain.gestor.DadosAtualizacaoGestor;
-import br.com.footed.CentroEsportivo.domain.gestor.DadosCadastroGestor;
-import br.com.footed.CentroEsportivo.domain.gestor.Gestor;
-import br.com.footed.CentroEsportivo.domain.gestor.GestorRepository;
+import br.com.footed.CentroEsportivo.model.gestor.DadosCadastroGestor;
+import br.com.footed.CentroEsportivo.model.gestor.DadosDetalhamentoGestor;
+import br.com.footed.CentroEsportivo.service.GestorService;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/gestor")
+@AllArgsConstructor
+@RequestMapping("gestor")
 public class GestorController {
-    @Autowired
-    private GestorRepository repository;
+
+    private GestorService gestorService;
 
     @PostMapping
     @Transactional
-    public void cadastrar(@RequestBody @Valid DadosCadastroGestor dados) {
-        this.repository.save(new Gestor(dados));
-    }
-
-    @PutMapping
-    @Transactional
-    public void atualizar(@RequestBody @Valid DadosAtualizacaoGestor dados) {
-        var gestor = repository.getReferenceById(dados.pessoa_id());
-        gestor.atualizarInformacoes(dados);
+    public DadosDetalhamentoGestor cadastrar(@RequestBody @Valid DadosCadastroGestor dadosCadastro) {
+        DadosDetalhamentoGestor detalhamentoGestor = gestorService.cadastrar(dadosCadastro);
+        return detalhamentoGestor;
     }
 }

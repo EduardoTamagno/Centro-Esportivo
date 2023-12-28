@@ -1,0 +1,17 @@
+POST http://localhost:8080/usuario
+Content-Type: application/json
+
+{
+  "cpf": "364.135.110-07",
+  "senha": "123",
+  "dadosPessoa" : {
+    "nome": "Cristiano Ronaldo",
+    "email": "omilhor@gmail.com",
+    "ddd":  "011",
+    "telefone": "965377824",
+    "data_nascimento": "15/02/1985"
+  }
+}
+
+
+###
